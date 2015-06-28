@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <CUnit/Basic.h>
+#include <limits.h>
 #include "beargit.h"
 #include "util.h"
 
@@ -94,7 +95,7 @@ void simple_log_test(void)
     run_commit(&commit_list, "GO BEARS!2");
     run_commit(&commit_list, "GO BEARS!3");
 
-    retval = beargit_log();
+    retval = beargit_log(INT_MAX);
     CU_ASSERT(0==retval);
 
     struct commit* cur_commit = commit_list;
